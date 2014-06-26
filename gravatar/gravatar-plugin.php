@@ -8,21 +8,22 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-class AvatarsCUPlugin extends RMIPlugin
+class GravatarCUPlugin extends RMIPlugin
 {
     public function __construct(){
         
         // Load language
-        load_plugin_locale('avatars', '', 'rmcommon');
+        load_plugin_locale('gravatar', '', 'rmcommon');
         
         $this->info = array(
-            'name'            => __('Avatars Plugin', 'avatars'),
-            'description'    => __('Plugin to use gravatar or other avatars system in Common Utilities','avatars'),
-            'version'        => '1.0.0.0',
+            'name'            => __('Gravatar for XOOPS', 'avatars'),
+            'description'    => __('Plugin to use gravatar in XOOPS with Common Utilities','avatars'),
+            'version'        => array('major'=>1,'minor'=>1,'revision'=>0, 'stage'=>-1,'name'=>'Gravatars'),
             'author'        => 'Eduardo Cortés',
             'email'            => 'i.bitcero@gmail.com',
-            'web'            => 'http://redmexico.com.mx',
-            'dir'            => 'avatars'
+            'web'            => 'http://eduardocortes.mx',
+            'dir'            => 'gravatar',
+            'updateurl'     => 'http://www.xoopsmexico.net/modules/vcontrol/'
         );
         
     }

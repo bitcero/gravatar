@@ -8,7 +8,7 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-class AvatarsPluginRmcommonPreload
+class GravatarPluginRmcommonPreload
 {
     
     public function eventRmcommonLoadingComments($comms, $obj, $params, $type, $parent, $user){
@@ -40,53 +40,15 @@ class AvatarsPluginRmcommonPreload
     * by passing an email address and other options
     */
     public function eventRmcommonGetAvatar($email, $size=0, $default=''){
-        $config = RMFunctions::get()->plugin_settings('avatars', true);
+
+        $config = RMSettings::plugin_settings('avatars', true);
         
-        $size = $size<=0 ? $size = $config['size']  : $size;
-        $default = $default=='' ? $config['default'] : $default;
+        $size = $size<=0 ? $size = $config->size  : $size;
+        $default = $default=='' ? $config->default : $default;
         
         $avatar = "http://www.gravatar.com/avatar/".md5($email)."?s=".$size.'&d='.$default;
         
         return $avatar;
-    }
-    
-    public function eventRmcommonCurrentModuleMenu($menu){
-        global $xoopsModule;
-        
-        if($xoopsModule->getVar('dirname')!='rmcommon') return $menu;
-        
-        $option = array(
-            'title'=>__('Gravatar options','gravatar'),
-            'link' => 'plugins.php?action=configure&plugin=avatars',
-            'selected' => ''
-        );
-        
-        foreach($menu as $i => $item){
-            if ($item['location']!='plugins') continue;
-            
-            $menu[$i]['options'][] = $option;
-            break;
-            
-        }
-        
-        return $menu;
-        
-    }
-    
-    public function eventRmcommonGetSystemTools($tools){
-        
-        load_plugin_locale('avatars', '', 'rmcommon');
-        
-        $rtn = array(
-            'link'  => RMCURL.'/plugins.php?action=configure&plugin=avatars',
-            'icon'  => RMCURL.'/plugins/avatars/gravatar.jpg',
-            'caption' => __('Avatars options', 'avatars')
-        );
-        
-        $tools[] = $rtn;
-        
-        return $tools;
-           
     }
     
 }
