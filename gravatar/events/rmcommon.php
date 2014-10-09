@@ -13,22 +13,21 @@ class GravatarPluginRmcommonPreload
     
     public function eventRmcommonLoadingComments($comms, $obj, $params, $type, $parent, $user){
         
-        $config = RMFunctions::get()->plugin_settings('avatars', true);
-        
+        $config = RMSettings::plugin_settings( 'gravatar', true );
+
         foreach($comms as $i => $com){
-            $comms[$i]['poster']['avatar'] = "http://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config['size'].'&d='.$config['default'];
+            $comms[$i]['poster']['avatar'] = "http://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config->size.'&d='.$config->default;
         }
-        
         return $comms;
         
     }
     
     public function eventRmcommonLoadingAdminComments($comms){
         
-        $config = RMFunctions::get()->plugin_settings('avatars', true);
+        $config = RMSettings::plugin_settings( 'gravatar', true );
         
         foreach($comms as $i => $com){
-            $comms[$i]['poster']['avatar'] = "http://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config['size'].'&d='.$config['default'];
+            $comms[$i]['poster']['avatar'] = "http://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config->size.'&d='.$config->default;
         }
         
         return $comms;
@@ -41,7 +40,7 @@ class GravatarPluginRmcommonPreload
     */
     public function eventRmcommonGetAvatar($email, $size=0, $default=''){
 
-        $config = RMSettings::plugin_settings('avatars', true);
+        $config = RMSettings::plugin_settings( 'gravatar', true );
         
         $size = $size<=0 ? $size = $config->size  : $size;
         $default = $default=='' ? $config->default : $default;
