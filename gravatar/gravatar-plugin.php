@@ -18,7 +18,7 @@ class GravatarCUPlugin extends RMIPlugin
         $this->info = array(
             'name'            => __('Gravatar for XOOPS', 'avatars'),
             'description'    => __('Plugin to use gravatar in XOOPS with Common Utilities','avatars'),
-            'version'        => array('major'=>1,'minor'=>2,'revision'=>10, 'stage'=>0,'name'=>'Gravatars'),
+            'version'        => array('major'=>1,'minor'=>2,'revision'=>12, 'stage'=>0,'name'=>'Gravatars'),
             'author'        => 'Eduardo Cortés',
             'email'            => 'i.bitcero@gmail.com',
             'web'            => 'http://eduardocortes.mx',

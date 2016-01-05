@@ -49,5 +49,23 @@ class GravatarPluginRmcommonPreload
         
         return $avatar;
     }
+
+    /**
+     * For new RMCommon service component
+     * @param array $services All added services
+     * @return array
+     */
+    public function eventRmcommonGetServices( $services ){
+
+        $services[] = array(
+            'id'        => 'Gravatar',
+            'service'   => 'avatar',
+            'file'      => RMCPATH . '/plugins/gravatar/class/GravatarService.php',
+            'class'     => 'GravatarService'
+        );
+
+        return $services;
+
+    }
     
 }
