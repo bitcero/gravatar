@@ -58,10 +58,12 @@ class GravatarPluginRmcommonPreload
     public function eventRmcommonGetServices( $services ){
 
         $services[] = array(
-            'id'        => 'Gravatar',
-            'service'   => 'avatar',
-            'file'      => RMCPATH . '/plugins/gravatar/class/GravatarService.php',
-            'class'     => 'GravatarService'
+            'id'            => 'gravatar', // provider id
+            'name'          => 'Gravatars', // Provider name
+            'description'   => __('Service provider to use avatars from gravatars.com'),
+            'service'       => 'avatar', // Service to provide
+            'file'          => RMCPATH . '/plugins/gravatar/class/GravatarService.php',
+            'class'         => 'GravatarService'
         );
 
         return $services;
