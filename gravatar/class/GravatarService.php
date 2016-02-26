@@ -88,7 +88,7 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
         $size = $size <= 0 ? $size = $config->size : $size;
         $default = $default == '' ? $config->default : $default;
 
-        $avatar = "http://www.gravatar.com/avatar/" . md5($email) . "?s=" . $size . '&d=' . $default;
+        $avatar = "//www.gravatar.com/avatar/" . md5($email) . "?s=" . $size . '&d=' . $default;
 
         return $avatar;
 

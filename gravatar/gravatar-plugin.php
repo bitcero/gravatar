@@ -18,12 +18,12 @@ class GravatarCUPlugin extends RMIPlugin
         $this->info = array(
             'name'            => __('Gravatar for XOOPS', 'avatars'),
             'description'    => __('Plugin to use gravatar in XOOPS with Common Utilities','avatars'),
-            'version'        => array('major'=>1,'minor'=>2,'revision'=>17, 'stage'=>0,'name'=>'Gravatars'),
+            'version'        => array('major'=>1,'minor'=>2,'revision'=>18, 'stage'=>0,'name'=>'Gravatars'),
             'author'        => 'Eduardo Cortés',
             'email'            => 'i.bitcero@gmail.com',
             'web'            => 'http://eduardocortes.mx',
             'dir'            => 'gravatar',
-            'updateurl'     => 'http://www.xoopsmexico.net/modules/vcontrol/'
+            'updateurl'     => 'https://www.xoopsmexico.net/modules/vcontrol/'
         );
         
     }
@@ -49,6 +49,16 @@ class GravatarCUPlugin extends RMIPlugin
         require 'include/options.php';
         return $options;
         
+    }
+
+    static function getInstance(){
+        static $instance;
+
+        if(!isset($instance)){
+            $instance = new GravatarCUPlugin();
+        }
+
+        return $instance;
     }
     
 }

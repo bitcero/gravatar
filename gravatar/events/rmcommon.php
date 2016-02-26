@@ -16,7 +16,7 @@ class GravatarPluginRmcommonPreload
         $config = RMSettings::plugin_settings( 'gravatar', true );
 
         foreach($comms as $i => $com){
-            $comms[$i]['poster']['avatar'] = "http://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config->size.'&d='.$config->default;
+            $comms[$i]['poster']['avatar'] = "https://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config->size.'&d='.$config->default;
         }
         return $comms;
         
@@ -27,7 +27,7 @@ class GravatarPluginRmcommonPreload
         $config = RMSettings::plugin_settings( 'gravatar', true );
         
         foreach($comms as $i => $com){
-            $comms[$i]['poster']['avatar'] = "http://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config->size.'&d='.$config->default;
+            $comms[$i]['poster']['avatar'] = "https://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config->size.'&d='.$config->default;
         }
         
         return $comms;
@@ -45,7 +45,7 @@ class GravatarPluginRmcommonPreload
         $size = $size<=0 ? $size = $config->size  : $size;
         $default = $default=='' ? $config->default : $default;
         
-        $avatar = "http://www.gravatar.com/avatar/".md5($email)."?s=".$size.'&d='.$default;
+        $avatar = "https://www.gravatar.com/avatar/".md5($email)."?s=".$size.'&d='.$default;
         
         return $avatar;
     }
