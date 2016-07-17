@@ -10,8 +10,8 @@
 
 class GravatarPluginRmcommonPreload
 {
-    
-    public function eventRmcommonLoadingComments($comms, $obj, $params, $type, $parent, $user){
+
+    /*static function eventRmcommonLoadingComments($comms, $obj, $params, $type, $parent, $user){
         
         $config = RMSettings::plugin_settings( 'gravatar', true );
 
@@ -20,9 +20,9 @@ class GravatarPluginRmcommonPreload
         }
         return $comms;
         
-    }
-    
-    public function eventRmcommonLoadingAdminComments($comms){
+    }*/
+
+    static function eventRmcommonLoadingAdminComments($comms){
         
         $config = RMSettings::plugin_settings( 'gravatar', true );
         
@@ -38,7 +38,7 @@ class GravatarPluginRmcommonPreload
     * This function allows to other modules or plugins get gravatars
     * by passing an email address and other options
     */
-    public function eventRmcommonGetAvatar($email, $size=0, $default=''){
+    static function eventRmcommonGetAvatar($email, $size=0, $default=''){
 
         $config = RMSettings::plugin_settings( 'gravatar', true );
         
@@ -55,7 +55,7 @@ class GravatarPluginRmcommonPreload
      * @param array $services All added services
      * @return array
      */
-    public function eventRmcommonGetServices( $services ){
+    static function eventRmcommonGetServices( $services ){
 
         $services[] = array(
             'id'            => 'gravatar', // provider id
