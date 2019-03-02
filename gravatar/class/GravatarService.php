@@ -68,9 +68,7 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
      */
     public function getAvatarSrc($user_or_email, $size = 80, $default = '')
     {
-
         if (is_object($user_or_email)) {
-
             if (is_a($user_or_email, 'XoopsUser')) {
                 $email = $user_or_email->getVar('email');
             } elseif (is_a($user_or_email, 'RMUser')) {
@@ -78,7 +76,6 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
             } else {
                 $email = $user_or_email->email;
             }
-
         } else {
             $email = $user_or_email;
         }
@@ -91,7 +88,6 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
         $avatar = "//www.gravatar.com/avatar/" . md5($email) . "?s=" . $size . '&d=' . $default;
 
         return $avatar;
-
     }
 
     /**
@@ -111,9 +107,7 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
      */
     public function getAvatar($user_or_email, $size = 80, $default = '')
     {
-
         if (is_object($user_or_email)) {
-
             if (is_a($user_or_email, 'XoopsUser')) {
                 $name = $user_or_email->getVar('name');
                 $uname = $user_or_email->getVar('uname');
@@ -124,12 +118,10 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
                 $name = $user_or_email->name;
                 $uname = $user_or_email->uname;
             }
-
         }
 
         $avatar = '<img src="' . $this->getAvatarSrc($user_or_email, $size, $default) . '" alt="' . ($name != '' ? $name : $uname) . '">';
         return $avatar;
-
     }
 
     /**
@@ -139,12 +131,12 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
     {
         static $instance;
 
-        if (isset($instance))
+        if (isset($instance)) {
             return $instance;
+        }
 
         $instance = new GravatarService();
 
         return $instance;
     }
-
 }

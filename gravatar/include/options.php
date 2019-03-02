@@ -9,7 +9,7 @@
 // --------------------------------------------------------------
 
 $options['size'] = array(
-        'caption'   =>  __('Avatars size in pixels','avatars'),
+        'caption'   =>  __('Avatars size in pixels', 'avatars'),
         'desc'      =>  '',
         'fieldtype'      =>  'textbox',
         'valuetype' =>  'int',
@@ -17,7 +17,7 @@ $options['size'] = array(
 );
 
 $options['default'] = array(
-        'caption'   =>  __('Default avatar URL','avatars'),
+        'caption'   =>  __('Default avatar URL', 'avatars'),
         'desc'      =>  '',
         'fieldtype'      =>  'textbox',
         'valuetype' =>  'text',
