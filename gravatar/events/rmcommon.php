@@ -15,35 +15,39 @@ class GravatarPluginRmcommonPreload
         $config = RMSettings::plugin_settings('gravatar', true);
 
         foreach ($comms as $i => $com) {
-            $comms[$i]['poster']['avatar'] = "https://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config->size.'&d='.$config->default;
+            $comms[$i]['poster']['avatar'] = 'https://www.gravatar.com/avatar/' . md5($comms[$i]['poster']['email']) . '?s=' . $config->size . '&d=' . $config->default;
         }
+
         return $comms;
     }
-    
+
     public function eventRmcommonLoadingAdminComments($comms)
     {
         $config = RMSettings::plugin_settings('gravatar', true);
-        
+
         foreach ($comms as $i => $com) {
-            $comms[$i]['poster']['avatar'] = "https://www.gravatar.com/avatar/".md5($comms[$i]['poster']['email'])."?s=".$config->size.'&d='.$config->default;
+            $comms[$i]['poster']['avatar'] = 'https://www.gravatar.com/avatar/' . md5($comms[$i]['poster']['email']) . '?s=' . $config->size . '&d=' . $config->default;
         }
-        
+
         return $comms;
     }
-    
+
     /**
-    * This function allows to other modules or plugins get gravatars
-    * by passing an email address and other options
-    */
-    public function eventRmcommonGetAvatar($email, $size=0, $default='')
+     * This function allows to other modules or plugins get gravatars
+     * by passing an email address and other options
+     * @param mixed $email
+     * @param mixed $size
+     * @param mixed $default
+     */
+    public function eventRmcommonGetAvatar($email, $size = 0, $default = '')
     {
         $config = RMSettings::plugin_settings('gravatar', true);
-        
-        $size = $size<=0 ? $size = $config->size  : $size;
-        $default = $default=='' ? $config->default : $default;
-        
-        $avatar = "https://www.gravatar.com/avatar/".md5($email)."?s=".$size.'&d='.$default;
-        
+
+        $size = $size <= 0 ? $size = $config->size : $size;
+        $default = '' == $default ? $config->default : $default;
+
+        $avatar = 'https://www.gravatar.com/avatar/' . md5($email) . '?s=' . $size . '&d=' . $default;
+
         return $avatar;
     }
 
@@ -54,14 +58,14 @@ class GravatarPluginRmcommonPreload
      */
     public function eventRmcommonGetServices($services)
     {
-        $services[] = array(
-            'id'            => 'gravatar', // provider id
-            'name'          => 'Gravatars', // Provider name
-            'description'   => __('Service provider to use avatars from gravatars.com'),
-            'service'       => 'avatar', // Service to provide
-            'file'          => RMCPATH . '/plugins/gravatar/class/GravatarService.php',
-            'class'         => 'GravatarService'
-        );
+        $services[] = [
+            'id' => 'gravatar', // provider id
+            'name' => 'Gravatars', // Provider name
+            'description' => __('Service provider to use avatars from gravatars.com'),
+            'service' => 'avatar', // Service to provide
+            'file' => RMCPATH . '/plugins/gravatar/class/GravatarService.php',
+            'class' => 'GravatarService',
+        ];
 
         return $services;
     }

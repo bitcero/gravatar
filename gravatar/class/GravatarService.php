@@ -28,11 +28,8 @@
  * @url          http://www.redmexico.com.mx
  * @url          http://www.eduardocortes.mx
  */
-
-
 class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \Common\Core\Helpers\ServiceInterface
 {
-
     /**
      * Retrieves the url pointing to an user avatar
      *
@@ -83,9 +80,9 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
         $config = RMSettings::plugin_settings('gravatar', true);
 
         $size = $size <= 0 ? $size = $config->size : $size;
-        $default = $default == '' ? $config->default : $default;
+        $default = '' == $default ? $config->default : $default;
 
-        $avatar = "//www.gravatar.com/avatar/" . md5($email) . "?s=" . $size . '&d=' . $default;
+        $avatar = '//www.gravatar.com/avatar/' . md5($email) . '?s=' . $size . '&d=' . $default;
 
         return $avatar;
     }
@@ -120,7 +117,8 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
             }
         }
 
-        $avatar = '<img src="' . $this->getAvatarSrc($user_or_email, $size, $default) . '" alt="' . ($name != '' ? $name : $uname) . '">';
+        $avatar = '<img src="' . $this->getAvatarSrc($user_or_email, $size, $default) . '" alt="' . ('' != $name ? $name : $uname) . '">';
+
         return $avatar;
     }
 
@@ -135,7 +133,7 @@ class GravatarService extends \Common\Core\Helpers\ServiceAbstract implements \C
             return $instance;
         }
 
-        $instance = new GravatarService();
+        $instance = new self();
 
         return $instance;
     }
